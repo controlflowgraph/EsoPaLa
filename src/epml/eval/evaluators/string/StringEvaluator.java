@@ -1,4 +1,4 @@
-package epml.eval.evaluators.util;
+package epml.eval.evaluators.string;
 
 import epml.eval.Evaluator;
 import epml.eval.values.StringValue;

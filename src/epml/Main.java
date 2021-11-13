@@ -10,9 +10,18 @@ import epml.eval.evaluators.arithmetic.SubtractionEvaluator;
 import epml.eval.evaluators.comparator.*;
 import epml.eval.evaluators.functions.*;
 import epml.eval.evaluators.list.*;
+import epml.eval.evaluators.string.RepeatStringEvaluator;
+import epml.eval.evaluators.string.RepeatedStringEvaluator;
+import epml.eval.evaluators.string.StringEvaluator;
 import epml.eval.evaluators.util.*;
 import epml.eval.evaluators.util.random.RandomNumberEvaluator;
 import epml.eval.evaluators.util.random.RandomNumberInRangeEvaluator;
+import epml.eval.evaluators.util.range.RangeToEvaluator;
+import epml.eval.evaluators.util.range.RangeToWithIncrementEvaluator;
+import epml.eval.evaluators.util.range.RangeUntilEvaluator;
+import epml.eval.evaluators.util.range.RangeUntilWithIncrementEvaluator;
+import epml.eval.evaluators.util.structs.ForEachEvaluator;
+import epml.eval.evaluators.util.structs.IfEvaluator;
 import epml.token.code.*;
 import epml.token.pattern.PatternExpression;
 import epml.token.pattern.PatternTokenizer;
@@ -49,7 +58,10 @@ public class Main
         AppendAllEvaluator.class,
         ConcatenationEvaluator.class,
         ForEachEvaluator.class,
-        RangeEvaluator.class,
+        RangeToEvaluator.class,
+        RangeToWithIncrementEvaluator.class,
+        RangeUntilEvaluator.class,
+        RangeUntilWithIncrementEvaluator.class,
         IsEvenEvaluator.class,
         ListFilterEvaluator.class,
         TakeWhileWhereEvaluator.class,
@@ -214,12 +226,13 @@ public class Main
     public static String code10()
     {
         return """
-            let (r) be equal to (the range from (1) to (10) incrementing by (1)).
+            let (r) be equal to (the range from (1) until (10) incrementing by (1)).
             let (l) be equal to (the empty list).
             for each (x) in (r) do ((
                 append (a random number between (0) and (x)) to (l).
             )).
             print(l).
+            print(the length of (l)).
             """;
     }
 
@@ -257,7 +270,7 @@ public class Main
 
         Environment env = new Environment();
 
-        String text = code(9);
+        String text = code(10);
         System.out.println(text);
         List<GroupToken> tokens = CodeTokenizer.tokenize(text);
         tokens.forEach(System.out::println);

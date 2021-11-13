@@ -1,13 +1,13 @@
 package epml.eval.values;
 
-public class RangeValueIterator implements ValueIterator
+public class RangeUntilValueIterator implements ValueIterator
 {
     private double index;
     private final double start;
     private final double end;
     private final double increment;
 
-    public RangeValueIterator(double start, double end, double increment)
+    public RangeUntilValueIterator(double start, double end, double increment)
     {
         this.start = start;
         this.end = end;
@@ -26,6 +26,6 @@ public class RangeValueIterator implements ValueIterator
     @Override
     public boolean hasNext()
     {
-        return this.start <= this.index && this.index < this.end;
+        return this.start <= this.index && this.index <= this.end;
     }
 }

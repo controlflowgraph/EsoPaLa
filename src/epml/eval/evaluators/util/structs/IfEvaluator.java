@@ -1,4 +1,4 @@
-package epml.eval.evaluators.util;
+package epml.eval.evaluators.util.structs;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;

@@ -1,12 +1,12 @@
 package epml.eval.values;
 
-public class RangeValue implements Value, ValueIterable
+public class RangeUntilValue implements Value, ValueIterable
 {
     private final double start;
     private final double end;
     private final double increment;
 
-    public RangeValue(double start, double end, double increment)
+    public RangeUntilValue(double start, double end, double increment)
     {
         this.start = start;
         this.end = end;
@@ -16,7 +16,7 @@ public class RangeValue implements Value, ValueIterable
     @Override
     public ValueIterator iterator()
     {
-        return new RangeValueIterator(this.start, this.end, this.increment);
+        return new RangeUntilValueIterator(this.start, this.end, this.increment);
     }
 
     @Override
