@@ -10,11 +10,11 @@ public class CodeTokenizer
 {
     private static final List<TokenType> TYPES = List.of(
             new TokenType("word", Pattern.compile("([a-zA-Z][a-zA-Z0-9]*)")),
-            new TokenType("number", Pattern.compile("([0-9]+)")),
+            new TokenType("number", Pattern.compile("([0-9]+(\\.[0-9]+)?)")),
             new TokenType("string", Pattern.compile("\"(\\\\.|.)*?\"")),
             new TokenType("parentheses", Pattern.compile("([()])")),
             new TokenType("dot", Pattern.compile("(\\.)")),
-            new TokenType("symbol", Pattern.compile("([^ \t\n]+)"))
+            new TokenType("symbol", Pattern.compile("([^ \t\r\n]+)"))
     );
 
     public static List<GroupToken> tokenize(String text)

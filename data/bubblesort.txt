@@ -1,0 +1,23 @@
+let (a) be equal to (the empty list).
+let (r) be equal to (the range from (0) to (100) incrementing by (1)).
+for each (x) in (r) do ((
+    (a) append (a random number).
+)).
+print(a).
+
+let (bubble) be equal to (a function that receives ((list)) and does the following ((
+    let (len) be equal to (the length of (list)).
+    let (r) be equal to (the range from (0) to (len) incrementing by (1)).
+    for each (leftIndex) in (r) do ((
+        let (sub) be equal to (the range from ((leftIndex) plus (1)) to (len) incrementing by (1)).
+        for each (rightIndex) in (sub) do ((
+            if (((list) at (leftIndex)) is greater than ((list) at (rightIndex))) then do ((
+                swap ((list) at (leftIndex)) and ((list) at (rightIndex)).
+            )).
+        )).
+    )).
+    return (l).
+))
+).
+call (bubble) with (a).
+for each (x) in (a) do (print(x)).

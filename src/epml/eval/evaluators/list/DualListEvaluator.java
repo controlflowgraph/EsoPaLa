@@ -24,6 +24,9 @@ public class DualListEvaluator implements Evaluator
     @Override
     public Value evaluate()
     {
-        return new ListValue(new ArrayList<>(List.of(this.value1.evaluate(), this.value2.evaluate())));
+        List<Value> list = new ArrayList<>();
+        list.add(this.value1.evaluate().val());
+        list.add(this.value2.evaluate().val());
+        return new ListValue(list);
     }
 }

@@ -2,10 +2,7 @@ package epml.eval;
 
 import epml.eval.values.Value;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Environment
 {
@@ -76,5 +73,13 @@ class Scope
     public void set(String variable, Value value)
     {
         this.variables.put(variable, value);
+    }
+
+    public void dump()
+    {
+        for(Map.Entry<String, Value> entry : this.variables.entrySet())
+        {
+            System.out.println(entry.getKey() + " - " + entry.getValue());
+        }
     }
 }

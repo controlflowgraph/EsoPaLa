@@ -5,7 +5,7 @@ import epml.eval.Evaluator;
 import epml.eval.LanguagePattern;
 import epml.eval.values.*;
 
-@LanguagePattern(pattern = "for each $var in $source do $body")
+@LanguagePattern(pattern = "for each $var in $source $body")
 public class ForEachEvaluator implements Evaluator
 {
     private final Environment env;

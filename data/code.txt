@@ -1,0 +1,61 @@
+let (a) be equal to (the empty list).
+let (size) be equal to (1000).
+let (r) be equal to (the range from (0) to (size) incrementing by (1)).
+for each (x) in (r) ((
+    (a) append (((a random number) times (size)) floored).
+)).
+
+
+let (mergeArrays) be equal to (a function that receives ((list1) (list2)) and does the following ((
+    let (i) be equal to (0).
+    let (k) be equal to (0).
+    let (list1End) be equal to (the length of (list1)).
+    let (list2End) be equal to (the length of (list2)).
+    let (result) be equal to (the empty list).
+    while (((i) is less than (list1End)) and ((k) is less than (list2End))) ((
+        if (((list1) at (i)) is less than ((list2) at (k))) then ((
+            append ((list1) at (i)) to (result).
+            set (i) to ((i) plus (1)).
+        )) otherwise ((
+            append ((list2) at (k)) to (result).
+            set (k) to ((k) plus (1)).
+        )).
+    )).
+    while ((i) is less than (list1End)) ((
+        append ((list1) at (i)) to (result).
+        set (i) to ((i) plus (1)).
+    )).
+
+    while ((k) is less than (list2End)) ((
+        append ((list2) at (k)) to (result).
+        set (k) to ((k) plus (1)).
+    )).
+    return (result).
+))
+).
+
+let (subMerge) be equal to (a function that receives ((list)) and does the following ((
+    let (len) be equal to (the length of (list)).
+    let (middle) be equal to (((len) divided by (2)) floored).
+    if ((len) is greater than (1)) then ((
+        let (subList1) be equal to (the sublist from (0) to (middle) of (list)).
+        let (subResult1) be equal to (call (subMerge) with ((subList1))).
+
+        let (subList2) be equal to (the sublist from (middle) to (len) of (list)).
+        let (subResult2) be equal to (call (subMerge) with ((subList2))).
+        return (call (mergeArrays) with ((subResult1) (subResult2))).
+    )) otherwise ((
+        return (a list only containing ((list) at (0))).
+    )).
+))
+).
+
+let (merge) be equal to (a function that receives (list) and does the following ((
+    return ((subMerge) called with ((list))).
+))
+).
+
+let (res) be equal to (call (merge) with (a)).
+for each (x) in (res) (print(x)).
+
+print(true).

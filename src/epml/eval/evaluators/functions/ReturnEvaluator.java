@@ -18,6 +18,6 @@ public class ReturnEvaluator implements Evaluator
     @Override
     public Value evaluate()
     {
-        return this.val.evaluate();
+        return this.val.evaluate().val();
     }
 }

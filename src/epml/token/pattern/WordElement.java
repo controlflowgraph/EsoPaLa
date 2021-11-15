@@ -10,4 +10,10 @@ public record WordElement(String content) implements Element
     {
         return token instanceof WordToken w && w.content().equals(this.content);
     }
+
+    @Override
+    public String toString()
+    {
+        return this.content;
+    }
 }

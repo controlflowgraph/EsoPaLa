@@ -23,6 +23,8 @@ public class IndexEvaluator implements Evaluator
     @Override
     public Value evaluate()
     {
-        return new IndexAccessor(this.list.evaluate().val(ListValue.class), this.index.evaluate().val (NumberValue.class));
+        ListValue list = this.list.evaluate().val(ListValue.class);
+        NumberValue index = this.index.evaluate().val(NumberValue.class);
+        return new IndexAccessor(list, index);
     }
 }

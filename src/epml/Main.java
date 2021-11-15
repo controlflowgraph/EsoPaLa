@@ -3,10 +3,9 @@ package epml;
 import epml.eval.Environment;
 import epml.eval.Evaluator;
 import epml.eval.LanguagePattern;
-import epml.eval.evaluators.arithmetic.AdditionEvaluator;
-import epml.eval.evaluators.arithmetic.DivisionEvaluator;
-import epml.eval.evaluators.arithmetic.MultiplicationEvaluator;
-import epml.eval.evaluators.arithmetic.SubtractionEvaluator;
+import epml.eval.evaluators.arithmetic.*;
+import epml.eval.evaluators.bool.AndEvaluator;
+import epml.eval.evaluators.bool.BooleanEvaluator;
 import epml.eval.evaluators.comparator.*;
 import epml.eval.evaluators.functions.*;
 import epml.eval.evaluators.list.*;
@@ -20,27 +19,24 @@ import epml.eval.evaluators.util.range.RangeToEvaluator;
 import epml.eval.evaluators.util.range.RangeToWithIncrementEvaluator;
 import epml.eval.evaluators.util.range.RangeUntilEvaluator;
 import epml.eval.evaluators.util.range.RangeUntilWithIncrementEvaluator;
-import epml.eval.evaluators.util.structs.ForEachEvaluator;
-import epml.eval.evaluators.util.structs.IfEvaluator;
+import epml.eval.evaluators.util.structs.*;
 import epml.token.code.*;
 import epml.token.pattern.PatternExpression;
 import epml.token.pattern.PatternTokenizer;
 
+import java.io.IOException;
 import java.lang.reflect.Constructor;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
 // TODO: redo everything ;)
-// TODO: add strings
 // TODO: add booleans
 // TODO: change from (annotated) class to (annotated) function
 // TODO: add multi patterns
 // TODO: add simple repetition to the patterns
 //  (if a placeholder is mentioned multiple times or in a repetition it is passed to the evaluator as a list)
-// TODO: abstract accessor and implement VariableAccessor and AttributeAccessor
-// TODO: add floating point numbers
-// TODO: add value objects that have a map of attributes
-//
 
 public class Main
 {
@@ -87,173 +83,16 @@ public class Main
         RandomNumberInRangeEvaluator.class,
         AppendAfterEvaluator.class,
         ListLengthEvaluator.class,
-        SwapElementEvaluator.class
+        SwapElementEvaluator.class,
+        FloorEvaluator.class,
+        WhileEvaluator.class,
+        AndEvaluator.class,
+        IfElseEvaluator.class,
+        SublistEvaluator.class,
+        DoWhileDoEvaluator.class
     );
 
-    public static String code0()
-    {
-        return """
-            for each (x) in (the range from (1) to (10) incrementing by (1)) do ((
-                print ((x) times (2)).
-            )).
-            """;
-    }
-
-    public static String code1()
-    {
-        return """
-            let (r) be equal to (the range from (1) to (20) incrementing by (1)).
-            print (only select (x) from (r) where ((x) is even)).
-            """;
-    }
-
-    public static String code2()
-    {
-        return """
-            let (r) be equal to (the range from (0) to (100) incrementing by (1)).
-            let (s) be equal to (from (r) filter all (x) where ((x) is even) while ((x) is less than (20))).
-            print (s).
-            """;
-    }
-
-    public static String code3()
-    {
-        return """
-            let (r) be equal to (the range from (0) to (100) incrementing by (1)).
-                        
-            let (s) be equal to (
-                a list containing all elements (x) from (r)
-                where ((x) is even)
-                while ((x) is less than (50))).
-                        
-            for each (x) in (s) do (print (x)).
-            """;
-    }
-
-    public static String code4()
-    {
-        return """
-            let (x) be equal to (1).
-            let (y) be equal to (100).
-            let (z) be equal to (1).
-            let (r) be equal to (the range from (x) to (y) incrementing by (z)).
-            for each (i) in (r) do (print (i)).
-            print ((y) minus (x)).
-            """;
-    }
-
-    public static String code5()
-    {
-        return """
-            let (x) be equal to ("Hello World!").
-            let (y) be equal to ((x) repeated (5) times).
-            print (x).
-            print (y).
-            """;
-    }
-
-    public static String code6()
-    {
-        return """
-            let (test) be equal to (a new object).
-            set ((x) of (test)) to ("Hello World!").
-            print ((x) of (test)).
-            """;
-    }
-
-    public static String code7()
-    {
-        return """
-            let (func) be equal to (a function that receives (r) and does the following ((
-                    for each (x) in (r) do ((
-                        print (x).
-                    )).
-                    return (100).
-                ))).
-            let (tr) be equal to (the range from (1) to (20) incrementing by (1)).
-            let (ret) be equal to ((func) called with (tr)).
-            print (ret).
-            """;
-    }
-
-    public static String code8()
-    {
-        return """
-            let (func) be equal to (a function that receives ((r1) (r2)) and does the following ((
-                    for each (x) in (r1) do ((
-                        for each (y) in (r2) do ((
-                            print ((x) times (y)).
-                        )).
-                    )).
-                    return (100).
-                ))).
-            let (tr) be equal to (the range from (1) to (11) incrementing by (1)).
-            let (ret) be equal to (the result of ((func) called with ((tr) (tr)))).
-            print (ret).
-            """;
-    }
-
-    public static String code9()
-    {
-        return """
-        let (a) be equal to (the empty list).
-        let (r) be equal to (the range from (0) to (100) incrementing by (1)).
-        for each (x) in (r) do ((
-            (a) append (a random number).
-        )).
-        print(a).
-        
-        let (bubble) be equal to (a function that receives ((list)) and does the following ((
-            let (len) be equal to (the length of (list)).
-            let (r) be equal to (the range from (0) to (len) incrementing by (1)).
-            for each (leftIndex) in (r) do ((
-                let (sub) be equal to (the range from ((leftIndex) plus (1)) to (len) incrementing by (1)).
-                for each (rightIndex) in (sub) do ((
-                    if (((list) at (leftIndex)) is greater than ((list) at (rightIndex))) then do ((
-                        swap ((list) at (leftIndex)) and ((list) at (rightIndex)).
-                    )).
-                )).
-            )).
-            return (l).
-        ))
-        ).
-        call (bubble) with (a).
-        for each (x) in (a) do (print(x)).
-        
-        """;
-    }
-
-    public static String code10()
-    {
-        return """
-            let (r) be equal to (the range from (1) until (10) incrementing by (1)).
-            let (l) be equal to (the empty list).
-            for each (x) in (r) do ((
-                append (a random number between (0) and (x)) to (l).
-            )).
-            print(l).
-            print(the length of (l)).
-            """;
-    }
-
-    public static String code(int index)
-    {
-        return new String[]{
-            code1(),
-            code0(),
-            code2(),
-            code3(),
-            code4(),
-            code5(),
-            code6(),
-            code7(),
-            code8(),
-            code9(),
-            code10(),
-        }[index];
-    }
-
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
         List<PatternExpression> expressions = new ArrayList<>();
         List<Constructor<?>> constructors = new ArrayList<>();
@@ -270,7 +109,7 @@ public class Main
 
         Environment env = new Environment();
 
-        String text = code(10);
+        String text = Files.readString(Path.of("data/code.txt"));
         System.out.println(text);
         List<GroupToken> tokens = CodeTokenizer.tokenize(text);
         tokens.forEach(System.out::println);
@@ -292,6 +131,8 @@ public class Main
                 }
                 else if (content.get(0) instanceof WordToken w)
                 {
+                    if(w.content().equals("true")) return new BooleanEvaluator(true);
+                    if(w.content().equals("false")) return new BooleanEvaluator(false);
                     return new VariableEvaluator(env, w.content());
                 }
                 else if (content.get(0) instanceof StringToken s)
@@ -314,7 +155,9 @@ public class Main
                 }
                 else
                 {
-                    System.out.println(token);
+                    System.out.println("-----------------" + token.getClass());
+                    System.out.println(content);
+                    System.out.println(token.toString().replace("\n", "\\n"));
                     throw new RuntimeException("Unexpected token in multi statement evaluator!");
                 }
             }

@@ -1,0 +1,7 @@
+let (r) be equal to (the range from (1) until (10) incrementing by (1)).
+let (l) be equal to (the empty list).
+for each (x) in (r) do ((
+    append (a random number between (0) and (x)) to (l).
+)).
+print(l).
+print(the length of (l)).

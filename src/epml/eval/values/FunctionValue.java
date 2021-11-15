@@ -23,7 +23,7 @@ public class FunctionValue implements Value
 
         for(int i = 0; i < this.parameters.size(); i++)
         {
-            env.set(this.parameters.get(i), arguments.get(i));
+            env.setLocal(this.parameters.get(i), arguments.get(i));
         }
 
         Value result = this.body.evaluate();

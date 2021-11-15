@@ -22,6 +22,8 @@ public class SingletonListEvaluator implements Evaluator
     @Override
     public Value evaluate()
     {
-        return new ListValue(new ArrayList<>(List.of(this.value1.evaluate())));
+        List<Value> list = new ArrayList<>();
+        list.add(this.value1.evaluate().val());
+        return new ListValue(list);
     }
 }

@@ -1,0 +1,11 @@
+let (func) be equal to (a function that receives ((r1) (r2)) and does the following ((
+        for each (x) in (r1) do ((
+            for each (y) in (r2) do ((
+                print ((x) times (y)).
+            )).
+        )).
+        return (100).
+    ))).
+let (tr) be equal to (the range from (1) to (11) incrementing by (1)).
+let (ret) be equal to (the result of ((func) called with ((tr) (tr)))).
+print (ret).

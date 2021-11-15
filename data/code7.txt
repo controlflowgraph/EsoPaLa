@@ -1,0 +1,45 @@
+let (func) be equal to (a function that receives (r) and does the following ((
+        for each (x) in (r) do ((
+            print (x).
+        )).
+        return (100).
+    ))).
+let (tr) be equal to (the range from (1) to (20) incrementing by (1)).
+let (ret) be equal to ((func) called with (tr)).
+print (ret).
+
+let (test) be equal to (a new object).
+set ((x) of (test)) to ("Hello World!").
+print ((x) of (test)).
+
+let (x) be equal to ("Hello World!").
+let (y) be equal to ((x) repeated (5) times).
+print (x).
+print (y).
+
+let (x) be equal to (1).
+let (y) be equal to (100).
+let (z) be equal to (1).
+let (r) be equal to (the range from (x) to (y) incrementing by (z)).
+for each (i) in (r) do (print (i)).
+print ((y) minus (x)).
+
+let (r) be equal to (the range from (0) to (100) incrementing by (1)).
+
+let (s) be equal to (
+    a list containing all elements (x) from (r)
+    where ((x) is even)
+    while ((x) is less than (50))).
+
+for each (x) in (s) do (print (x)).
+
+let (r) be equal to (the range from (0) to (100) incrementing by (1)).
+let (s) be equal to (from (r) filter all (x) where ((x) is even) while ((x) is less than (20))).
+print (s).
+
+let (r) be equal to (the range from (1) to (20) incrementing by (1)).
+print (only select (x) from (r) where ((x) is even)).
+
+for each (x) in (the range from (1) to (10) incrementing by (1)) do ((
+    print ((x) times (2)).
+)).
