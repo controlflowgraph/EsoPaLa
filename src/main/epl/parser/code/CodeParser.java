@@ -2,9 +2,8 @@ package epl.parser.code;
 
 import epl.parser.code.segment.*;
 import epl.parser.code.token.CodeToken;
-import epl.parser.code.token.CodeTokenType;
 import epl.parser.code.token.CodeTokenizer;
-import epl.parser.util.TokenIterator;
+import epl.parser.util.IndexedIterator;
 
 import java.util.List;
 import java.util.Stack;
@@ -16,12 +15,12 @@ public class CodeParser
         return new CodeParser(CodeTokenizer.tokenize(text)).parse();
     }
 
-    private final TokenIterator<CodeToken, CodeTokenType> iterator;
+    private final IndexedIterator<CodeToken> iterator;
     private final Stack<SubCodeSegment> subSegments = new Stack<>();
 
     private CodeParser(List<CodeToken> tokens)
     {
-        this.iterator = TokenIterator.iterator(tokens);
+        this.iterator = IndexedIterator.iterator(tokens);
     }
 
     private List<CodeSegment> parse()

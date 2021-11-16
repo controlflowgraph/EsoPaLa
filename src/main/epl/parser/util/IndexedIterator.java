@@ -2,18 +2,18 @@ package epl.parser.util;
 
 import java.util.List;
 
-public class TokenIterator <TokenClass extends Token<TokenType>, TokenType>
+public class IndexedIterator<T>
 {
-    public static <TokenClass extends Token<TokenType>, TokenType> TokenIterator<TokenClass, TokenType> iterator(List<TokenClass> tokens)
+    public static <T> IndexedIterator<T> iterator(List<T> tokens)
     {
-        return new TokenIterator<>(tokens);
+        return new IndexedIterator<>(tokens);
     }
 
     private int index;
     private final int length;
-    private final List<TokenClass> tokens;
+    private final List<T> tokens;
 
-    private TokenIterator(List<TokenClass> tokens)
+    private IndexedIterator(List<T> tokens)
     {
         this.length = tokens.size();
         this.tokens = tokens;
@@ -34,17 +34,17 @@ public class TokenIterator <TokenClass extends Token<TokenType>, TokenType>
         return this.index;
     }
 
-    public TokenClass next()
+    public T next()
     {
         return this.tokens.get(this.index++);
     }
 
-    public TokenClass peek()
+    public T peek()
     {
         return this.tokens.get(this.index);
     }
 
-    public TokenClass last()
+    public T last()
     {
         return this.tokens.get(this.index - 1);
     }
