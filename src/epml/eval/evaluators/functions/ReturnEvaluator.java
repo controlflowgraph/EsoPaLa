@@ -2,10 +2,10 @@ package epml.eval.evaluators.functions;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.Value;
 
-@LanguagePattern(pattern = "return $val")
+@SingleLanguagePattern(pattern = "return $val")
 public class ReturnEvaluator implements Evaluator
 {
     private final Evaluator val;

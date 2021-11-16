@@ -2,12 +2,12 @@ package epml.eval.evaluators.list;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.ListValue;
 import epml.eval.values.NoneValue;
 import epml.eval.values.Value;
 
-@LanguagePattern(pattern = "append $val to $list")
+@SingleLanguagePattern(pattern = "append $val to $list")
 public class AppendAfterEvaluator implements Evaluator
 {
     private final Evaluator value;

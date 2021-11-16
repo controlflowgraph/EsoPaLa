@@ -1,7 +1,6 @@
 package epml.eval.evaluators.bool;
 
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
 import epml.eval.values.BooleanValue;
 import epml.eval.values.Value;
 

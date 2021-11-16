@@ -2,13 +2,13 @@ package epml.eval.evaluators.list;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@LanguagePattern(pattern = "only select $var from $source where $cond")
+@SingleLanguagePattern(pattern = "only select $var from $source where $cond")
 public class ListFilterEvaluator implements Evaluator
 {
     private final Environment env;

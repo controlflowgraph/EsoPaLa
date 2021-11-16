@@ -2,14 +2,14 @@ package epml.eval.evaluators.list;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.ListValue;
 import epml.eval.values.Value;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@LanguagePattern(pattern = "a list containing $a and $c")
+@SingleLanguagePattern(pattern = "a list containing $a and $c")
 public class DualListEvaluator implements Evaluator
 {
     private final Evaluator value1;

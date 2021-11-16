@@ -2,11 +2,11 @@ package epml.eval.evaluators.arithmetic;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.NumberValue;
 import epml.eval.values.Value;
 
-@LanguagePattern(pattern = "$v floored")
+@SingleLanguagePattern(pattern = "$v floored")
 public class FloorEvaluator implements Evaluator
 {
     private final Evaluator v;

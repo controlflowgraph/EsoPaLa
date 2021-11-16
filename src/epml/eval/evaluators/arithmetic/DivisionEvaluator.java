@@ -2,12 +2,11 @@ package epml.eval.evaluators.arithmetic;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.NumberValue;
 import epml.eval.values.Value;
-import epml.eval.values.VariableAccessor;
 
-@LanguagePattern(pattern = "$a divided by $b")
+@SingleLanguagePattern(pattern = "$a divided by $b")
 public class DivisionEvaluator implements Evaluator
 {
     private final Environment env;

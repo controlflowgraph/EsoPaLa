@@ -2,13 +2,12 @@ package epml.eval.evaluators.util;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.Accessor;
 import epml.eval.values.NoneValue;
 import epml.eval.values.Value;
-import epml.eval.values.VariableAccessor;
 
-@LanguagePattern(pattern = "set $a to $b")
+@SingleLanguagePattern(pattern = "set $a to $b")
 public class SetVariableEvaluator implements Evaluator
 {
     private final Evaluator a;

@@ -2,12 +2,12 @@ package epml.eval.evaluators.string;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.NumberValue;
 import epml.eval.values.StringValue;
 import epml.eval.values.Value;
 
-@LanguagePattern(pattern = "repeat $a $b times")
+@SingleLanguagePattern(pattern = "repeat $a $b times")
 public class RepeatStringEvaluator implements Evaluator
 {
     private final Evaluator a;

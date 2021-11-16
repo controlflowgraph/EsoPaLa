@@ -2,11 +2,11 @@ package epml.eval.evaluators.util;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.Value;
 import epml.eval.values.ObjectValue;
 
-@LanguagePattern(pattern = "a new object")
+@SingleLanguagePattern(pattern = "a new object")
 public class ObjectCreationEvaluator implements Evaluator
 {
     public ObjectCreationEvaluator(Environment env)

@@ -2,12 +2,12 @@ package epml.eval.evaluators.util.structs;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.BooleanValue;
 import epml.eval.values.NoneValue;
 import epml.eval.values.Value;
 
-@LanguagePattern(pattern = "execute $pre while $cond $after")
+@SingleLanguagePattern(pattern = "execute $pre while $cond $after")
 public class DoWhileDoEvaluator implements Evaluator
 {
     private final Environment env;

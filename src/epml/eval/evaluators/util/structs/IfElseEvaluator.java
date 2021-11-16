@@ -2,11 +2,11 @@ package epml.eval.evaluators.util.structs;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.BooleanValue;
 import epml.eval.values.Value;
 
-@LanguagePattern(pattern = "if $cond then $body otherwise $e")
+@SingleLanguagePattern(pattern = "if $cond then $body otherwise $e")
 public class IfElseEvaluator implements Evaluator
 {
     private final Environment env;

@@ -2,12 +2,12 @@ package epml.eval.evaluators.util.range;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.NumberValue;
 import epml.eval.values.RangeToValue;
 import epml.eval.values.Value;
 
-@LanguagePattern(pattern = "the range from $a to $b incrementing by $c")
+@SingleLanguagePattern(pattern = "the range from $a to $b incrementing by $c")
 public class RangeToWithIncrementEvaluator implements Evaluator
 {
     private final Evaluator start;

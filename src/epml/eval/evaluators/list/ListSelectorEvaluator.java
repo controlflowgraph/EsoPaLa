@@ -2,13 +2,13 @@ package epml.eval.evaluators.list;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@LanguagePattern(pattern = "a list containing all elements $var from $source where $c")
+@SingleLanguagePattern(pattern = "a list containing all elements $var from $source where $c")
 public class ListSelectorEvaluator implements Evaluator
 {
     private final Environment env;

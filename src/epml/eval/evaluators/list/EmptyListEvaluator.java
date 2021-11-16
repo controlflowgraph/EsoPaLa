@@ -2,14 +2,14 @@ package epml.eval.evaluators.list;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.ListValue;
 import epml.eval.values.Value;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@LanguagePattern(pattern = "the empty list")
+@SingleLanguagePattern(pattern = "the empty list")
 public class EmptyListEvaluator implements Evaluator
 {
     public EmptyListEvaluator(Environment env)

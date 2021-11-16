@@ -2,11 +2,11 @@ package epml.eval.evaluators.util;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.Value;
 import epml.eval.values.VariableAccessor;
 
-@LanguagePattern(pattern = "let $var be equal to $val")
+@SingleLanguagePattern(pattern = "let $var be equal to $val")
 public class AssignmentEvaluator implements Evaluator
 {
     private final Environment env;

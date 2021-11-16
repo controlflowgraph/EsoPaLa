@@ -2,13 +2,13 @@ package epml.eval.evaluators.util;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.AttributeAccessor;
 import epml.eval.values.Value;
 import epml.eval.values.ObjectValue;
 import epml.eval.values.VariableAccessor;
 
-@LanguagePattern(pattern = "$a of $b")
+@SingleLanguagePattern(pattern = "$a of $b")
 public class AttributeAccessorEvaluator implements Evaluator
 {
     private final Evaluator a;

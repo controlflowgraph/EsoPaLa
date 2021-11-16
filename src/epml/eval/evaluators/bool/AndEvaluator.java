@@ -2,11 +2,11 @@ package epml.eval.evaluators.bool;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.BooleanValue;
 import epml.eval.values.Value;
 
-@LanguagePattern(pattern = "$a and $b")
+@SingleLanguagePattern(pattern = "$a and $b")
 public class AndEvaluator implements Evaluator
 {
     private final Evaluator a;

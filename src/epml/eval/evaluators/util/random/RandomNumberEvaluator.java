@@ -2,11 +2,11 @@ package epml.eval.evaluators.util.random;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.NumberValue;
 import epml.eval.values.Value;
 
-@LanguagePattern(pattern = "a random number")
+@SingleLanguagePattern(pattern = "a random number")
 public class RandomNumberEvaluator implements Evaluator
 {
     public RandomNumberEvaluator(Environment env)

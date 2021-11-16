@@ -2,12 +2,12 @@ package epml.eval.evaluators.comparator;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.BooleanValue;
 import epml.eval.values.NumberValue;
 import epml.eval.values.Value;
 
-@LanguagePattern(pattern = "$num is even")
+@SingleLanguagePattern(pattern = "$num is even")
 public class IsEvenEvaluator implements Evaluator
 {
     private final Evaluator num;

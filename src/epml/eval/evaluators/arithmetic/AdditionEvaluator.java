@@ -2,11 +2,11 @@ package epml.eval.evaluators.arithmetic;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.NumberValue;
 import epml.eval.values.Value;
 
-@LanguagePattern(pattern = "$a plus $b")
+@SingleLanguagePattern(pattern = "$a plus $b")
 public class AdditionEvaluator implements Evaluator
 {
     private final Environment env;

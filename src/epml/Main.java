@@ -2,7 +2,8 @@ package epml;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.MultiLanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.evaluators.arithmetic.*;
 import epml.eval.evaluators.bool.AndEvaluator;
 import epml.eval.evaluators.bool.BooleanEvaluator;
@@ -99,9 +100,25 @@ public class Main
 
         for (Class<? extends Evaluator> evaluator : EVALUATORS)
         {
-            LanguagePattern annotation = evaluator.getAnnotation(LanguagePattern.class);
-            String pattern = annotation.pattern();
-            expressions.add(PatternTokenizer.tokenize(pattern));
+            if(evaluator.isAnnotationPresent(SingleLanguagePattern.class))
+            {
+                SingleLanguagePattern annotation = evaluator.getAnnotation(SingleLanguagePattern.class);
+                String pattern = annotation.pattern();
+                expressions.add(PatternTokenizer.tokenize(pattern));
+            }
+            else if(evaluator.isAnnotationPresent(MultiLanguagePattern.class))
+            {
+                MultiLanguagePattern annotation = evaluator.getAnnotation(MultiLanguagePattern.class);
+                String[] patterns = annotation.patterns();
+                for(String pattern : patterns)
+                {
+                    expressions.add(PatternTokenizer.tokenize(pattern));
+                }
+            }
+            else
+            {
+                throw new RuntimeException("Invalid language (not annotated with SingleLanguagePattern or MultiLanguagePattern) " + evaluator.getName());
+            }
 
             Constructor<?>[] classConstructors = evaluator.getDeclaredConstructors();
             constructors.add(classConstructors[0]);

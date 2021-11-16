@@ -2,12 +2,12 @@ package epml.eval.evaluators.list;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.Accessor;
 import epml.eval.values.NoneValue;
 import epml.eval.values.Value;
 
-@LanguagePattern(pattern = "swap $a and $b")
+@SingleLanguagePattern(pattern = "swap $a and $b")
 public class SwapElementEvaluator implements Evaluator
 {
     private final Evaluator a;

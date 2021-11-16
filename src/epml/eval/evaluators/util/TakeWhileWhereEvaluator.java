@@ -2,13 +2,13 @@ package epml.eval.evaluators.util;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@LanguagePattern(pattern = "from $source filter all $var where $c while $cc")
+@SingleLanguagePattern(pattern = "from $source filter all $var where $c while $cc")
 public class TakeWhileWhereEvaluator implements Evaluator
 {
     private final Environment env;

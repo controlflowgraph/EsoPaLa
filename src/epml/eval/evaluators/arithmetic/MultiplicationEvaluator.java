@@ -2,11 +2,11 @@ package epml.eval.evaluators.arithmetic;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.NumberValue;
 import epml.eval.values.Value;
 
-@LanguagePattern(pattern = "$a times $b")
+@SingleLanguagePattern(pattern = "$a times $b")
 public class MultiplicationEvaluator implements Evaluator
 {
     private final Environment env;

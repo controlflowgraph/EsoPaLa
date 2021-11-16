@@ -2,13 +2,12 @@ package epml.eval.evaluators.list;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.MultiLanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.ListValue;
 import epml.eval.values.Value;
 
-import java.util.List;
-
-@LanguagePattern(pattern = "$val append $val")
+@MultiLanguagePattern(patterns = {"$val append $val"})
 public class AppendEvaluator implements Evaluator
 {
     private final Evaluator list;

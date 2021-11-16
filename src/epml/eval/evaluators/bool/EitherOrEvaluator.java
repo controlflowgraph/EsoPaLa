@@ -2,11 +2,11 @@ package epml.eval.evaluators.bool;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.values.BooleanValue;
 import epml.eval.values.Value;
 
-@LanguagePattern(pattern = "either $a or $b")
+@SingleLanguagePattern(pattern = "either $a or $b")
 public class EitherOrEvaluator implements Evaluator
 {
     private final Evaluator a;

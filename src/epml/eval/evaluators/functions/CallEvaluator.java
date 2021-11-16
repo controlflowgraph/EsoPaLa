@@ -2,7 +2,7 @@ package epml.eval.evaluators.functions;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.evaluators.util.MultiEvaluator;
 import epml.eval.values.FunctionValue;
 import epml.eval.values.Value;
@@ -10,7 +10,7 @@ import epml.eval.values.Value;
 import java.util.ArrayList;
 import java.util.List;
 
-@LanguagePattern(pattern = "call $func with $args")
+@SingleLanguagePattern(pattern = "call $func with $args")
 public class CallEvaluator implements Evaluator
 {
     private final Environment env;

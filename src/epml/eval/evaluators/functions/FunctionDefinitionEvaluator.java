@@ -2,7 +2,7 @@ package epml.eval.evaluators.functions;
 
 import epml.eval.Environment;
 import epml.eval.Evaluator;
-import epml.eval.LanguagePattern;
+import epml.eval.SingleLanguagePattern;
 import epml.eval.evaluators.util.MultiEvaluator;
 import epml.eval.values.FunctionValue;
 import epml.eval.values.Value;
@@ -11,7 +11,7 @@ import epml.eval.values.VariableAccessor;
 import java.util.ArrayList;
 import java.util.List;
 
-@LanguagePattern(pattern = "a function that receives $parameters and does the following $body")
+@SingleLanguagePattern(pattern = "a function that receives $parameters and does the following $body")
 public class FunctionDefinitionEvaluator implements Evaluator
 {
     private final Evaluator parameters;
