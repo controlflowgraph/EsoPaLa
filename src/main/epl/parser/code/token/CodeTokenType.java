@@ -6,8 +6,6 @@ public enum CodeTokenType
     NUMBER,
     OPENING_PARENTHESES,
     CLOSING_PARENTHESES,
-    DOT,
-    COMMA,
-    UNKNOWN,
+    DOT
     ;
 }
