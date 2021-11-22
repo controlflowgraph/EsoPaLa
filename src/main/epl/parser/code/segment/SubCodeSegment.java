@@ -14,4 +14,10 @@ public record SubCodeSegment(List<CodeSegment> segments) implements CodeSegment
     {
         this.segments.add(segment);
     }
+
+    @Override
+    public String toString()
+    {
+        return this.segments.toString();
+    }
 }
