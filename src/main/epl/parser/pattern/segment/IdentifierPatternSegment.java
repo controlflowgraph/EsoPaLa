@@ -1,6 +1,7 @@
 package epl.parser.pattern.segment;
 
 import epl.eval.evaluators.Evaluator;
+import epl.eval.evaluators.atom.BooleanEvaluator;
 import epl.eval.evaluators.atom.NumberEvaluator;
 import epl.eval.evaluators.util.VariableLocationEvaluator;
 import epl.parser.CodePatternMatcher;
@@ -24,7 +25,15 @@ public record IdentifierPatternSegment(String identifier) implements PatternSegm
         CodeSegment next = context.getNext();
         if(next instanceof WordCodeSegment w)
         {
-            List<Evaluator> evaluators = List.of(new VariableLocationEvaluator(context.getEnv(), w.word()));
+            List<Evaluator> evaluators;
+            if(w.word().equals("true") || w.word().equals("false"))
+            {
+                evaluators = List.of(new BooleanEvaluator(w.word()));
+            }
+            else
+            {
+                evaluators = List.of(new VariableLocationEvaluator(context.getEnv(), w.word()));
+            }
             return Map.of(this.identifier, evaluators);
         }
         if(next instanceof NumberCodeSegment n)
