@@ -3,7 +3,6 @@ package epl.eval.evaluators.arithmetic;
 import epl.eval.LanguagePattern;
 import epl.eval.evaluators.Evaluator;
 import epl.eval.operations.arithmetic.Addition;
-import epl.eval.values.NumberValue;
 import epl.eval.values.Value;
 
 @LanguagePattern(patterns = { "$a plus $b" })
