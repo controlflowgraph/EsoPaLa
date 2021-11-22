@@ -1,8 +1,9 @@
 package epl.eval.values;
 
 import epl.eval.operations.arithmetic.*;
+import epl.eval.operations.comparators.*;
 
-public record NumberValue(double number) implements Value, Addition, Subtraction, Multiplication, Division, Modulo
+public record NumberValue(double number) implements Value, Addition, Subtraction, Multiplication, Division, Modulo, Greater, GreaterEqual, Less, LessEqual, Equal, Unequal
 {
     @Override
     public String toString()
@@ -56,6 +57,66 @@ public record NumberValue(double number) implements Value, Addition, Subtraction
         if(value instanceof NumberValue n)
         {
             return new NumberValue(this.number % n.number);
+        }
+        return unsupported(value);
+    }
+
+    @Override
+    public Value gre(Value value)
+    {
+        if(value instanceof NumberValue n)
+        {
+            return new BooleanValue(this.number > n.number);
+        }
+        return unsupported(value);
+    }
+
+    @Override
+    public Value geq(Value value)
+    {
+        if(value instanceof NumberValue n)
+        {
+            return new BooleanValue(this.number >= n.number);
+        }
+        return unsupported(value);
+    }
+
+    @Override
+    public Value les(Value value)
+    {
+        if(value instanceof NumberValue n)
+        {
+            return new BooleanValue(this.number < n.number);
+        }
+        return unsupported(value);
+    }
+
+    @Override
+    public Value leq(Value value)
+    {
+        if(value instanceof NumberValue n)
+        {
+            return new BooleanValue(this.number <= n.number);
+        }
+        return unsupported(value);
+    }
+
+    @Override
+    public Value eq(Value value)
+    {
+        if(value instanceof NumberValue n)
+        {
+            return new BooleanValue(this.number == n.number);
+        }
+        return unsupported(value);
+    }
+
+    @Override
+    public Value ueq(Value value)
+    {
+        if(value instanceof NumberValue n)
+        {
+            return new BooleanValue(this.number == n.number);
         }
         return unsupported(value);
     }
