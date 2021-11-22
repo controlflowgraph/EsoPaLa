@@ -48,4 +48,9 @@ public class IndexedIterator<T>
     {
         return this.tokens.get(this.index - 1);
     }
+
+    public int getLength()
+    {
+        return this.length;
+    }
 }
