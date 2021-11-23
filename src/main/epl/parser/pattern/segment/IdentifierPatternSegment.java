@@ -3,6 +3,7 @@ package epl.parser.pattern.segment;
 import epl.eval.evaluators.Evaluator;
 import epl.eval.evaluators.atom.BooleanEvaluator;
 import epl.eval.evaluators.atom.NumberEvaluator;
+import epl.eval.evaluators.util.MultiEvaluator;
 import epl.eval.evaluators.util.VariableLocationEvaluator;
 import epl.parser.CodePatternMatcher;
 import epl.parser.MatchingContext;
@@ -16,7 +17,6 @@ import java.util.Map;
 
 public record IdentifierPatternSegment(String identifier) implements PatternSegment
 {
-
     @Override
     public Map<String, List<Evaluator>> matches(MatchingContext context)
     {
@@ -44,7 +44,14 @@ public record IdentifierPatternSegment(String identifier) implements PatternSegm
         if(next instanceof SubCodeSegment s)
         {
             List<Evaluator> evaluators = CodePatternMatcher.getEvaluators(s.segments(), context.getUnits(), context.getEnv());
-            return Map.of(this.identifier, evaluators);
+            if(evaluators.size() == 1)
+            {
+                return Map.of(this.identifier, evaluators);
+            }
+            else
+            {
+                return Map.of(this.identifier, List.of(new MultiEvaluator(evaluators)));
+            }
         }
         context.restore();
         return null;
