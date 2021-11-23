@@ -13,7 +13,14 @@ public record SubPatternSegment(List<PatternSegment> segments, Quantifier quanti
     @Override
     public Map<String, List<Evaluator>> matches(MatchingContext context)
     {
-        if(!context.hasNext()) return null;
+        if(!context.hasNext())
+        {
+            if(this.quantifier == Quantifier.OPTIONAL)
+            {
+                return Map.of();
+            }
+            return null;
+        }
         int occurrences = 0;
         Map<String, List<Evaluator>> evaluators = new HashMap<>();
         loop:
@@ -33,9 +40,9 @@ public record SubPatternSegment(List<PatternSegment> segments, Quantifier quanti
             }
             mergeMaps(evaluators, iteration);
             occurrences++;
+            if(this.quantifier == Quantifier.OPTIONAL) break;
         }
 
-        if(this.quantifier == Quantifier.OPTIONAL && occurrences > 1) return null;
         if(this.quantifier == Quantifier.EXISTENT && occurrences < 1) return null;
         return evaluators;
     }
