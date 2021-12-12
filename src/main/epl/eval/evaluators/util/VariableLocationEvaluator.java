@@ -16,6 +16,11 @@ public class VariableLocationEvaluator implements Evaluator
         this.variable = variable;
     }
 
+    public String getVariable()
+    {
+        return this.variable;
+    }
+
     @Override
     public Value evaluate()
     {
